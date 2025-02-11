@@ -5,6 +5,8 @@ import TaskCard from 'src/components/TaskCard.vue';
 import type { NewTask, Task } from 'src/types/Task';
 import { computed, onMounted, ref } from 'vue';
 
+const API_URL: string = import.meta.env.VITE_API_URL as string;
+
 const tasks = ref<Task[]>([]);
 const prompt = ref<boolean>(false);
 const editPrompt = ref<boolean>(false);
@@ -23,7 +25,7 @@ const sortTasks = (tasks: Task[]) => {
 };
 const fetchTasks = async () => {
   try {
-    const res = await fetch('http://localhost:5000/tasks');
+    const res = await fetch(`${API_URL}/tasks`);
     tasks.value = await res.json();
     tasks.value = sortTasks(tasks.value);
   } catch (error) {
@@ -35,7 +37,7 @@ const toggleCompletion = async (taskId: string) => {
   if (task) {
     task.completed = !task.completed;
     try {
-      await fetch(`http://localhost:5000/tasks/${taskId}`, {
+      await fetch(`${API_URL}/tasks/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task),
@@ -48,7 +50,7 @@ const toggleCompletion = async (taskId: string) => {
 };
 const addTask = async (newTask: NewTask) => {
   try {
-    const res = await fetch('http://localhost:5000/tasks', {
+    const res = await fetch(`${API_URL}/tasks`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newTask),
@@ -62,7 +64,7 @@ const addTask = async (newTask: NewTask) => {
 };
 const deleteTask = async (taskId: string) => {
   try {
-    await fetch(`http://localhost:5000/tasks/${taskId}`, {
+    await fetch(`${API_URL}/tasks/${taskId}`, {
       method: 'DELETE',
     });
     tasks.value = tasks.value.filter((task) => task.id !== taskId);
@@ -72,7 +74,7 @@ const deleteTask = async (taskId: string) => {
 };
 const updateTask = async (updatedTask: Task) => {
   try {
-    await fetch(`http://localhost:5000/tasks/${updatedTask.id}`, {
+    await fetch(`${API_URL}/tasks/${updatedTask.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedTask),

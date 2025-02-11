@@ -16,7 +16,7 @@
       "id": "b2e0",
       "title": "Task 3",
       "description": "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development to fill empty spaces in a layout that does not yet have content.",
-      "completed": false
+      "completed": true
     },
     {
       "id": "b2e1",
@@ -184,7 +184,7 @@
       "id": "b2e28",
       "title": "Task 31",
       "description": "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development to fill empty spaces in a layout that does not yet have content.",
-      "completed": false
+      "completed": true
     },
     {
       "id": "b2e29",
@@ -208,7 +208,7 @@
       "id": "b2e32",
       "title": "Task 35",
       "description": "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development to fill empty spaces in a layout that does not yet have content.",
-      "completed": false
+      "completed": true
     }
   ]
 }
